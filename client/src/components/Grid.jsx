@@ -107,9 +107,10 @@ export default function Grid({ cells, me, onClaim, cooldown }) {
         isMe={cell.owner === me.id}
         onClick={handleCellClick}
         idx={i}
+        myColor={me.color}
       />
     )),
-    [cells, me.id, handleCellClick]
+    [cells, me.id, me.color, handleCellClick]
   );
 
   const { x, y, scale } = view;

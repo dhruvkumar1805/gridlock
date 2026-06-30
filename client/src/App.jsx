@@ -97,7 +97,7 @@ export default function App() {
 
   return (
     <div className="app">
-      <Header online={online} me={me} onRename={rename} />
+      <Header online={online} me={me} onRename={rename} cooldown={cooldownLeft} />
       <div className="layout">
         <Grid cells={cells} me={me} onClaim={claim} cooldown={cooldownLeft} />
         <Sidebar board={board} me={me} cooldown={cooldownLeft} myCount={myCount} total={cells.length} />

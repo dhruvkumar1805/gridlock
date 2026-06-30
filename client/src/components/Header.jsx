@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function Header({ online, me, onRename }) {
+export default function Header({ online, me, onRename, cooldown }) {
   const [editing, setEditing] = useState(false);
   const [draft, setDraft] = useState('');
 
@@ -25,7 +25,10 @@ export default function Header({ online, me, onRename }) {
       <span className="logo">Gridlock</span>
 
       <div className="header-user">
-        <span className="color-chip" style={{ background: me.color }} />
+        <span
+          className={`color-chip${cooldown > 0 ? ' chip-cooling' : ''}`}
+          style={{ background: me.color }}
+        />
         {editing ? (
           <input
             className="name-input"
