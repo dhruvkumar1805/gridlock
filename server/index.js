@@ -1,16 +1,25 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
 const server = http.createServer(app);
 
+const isProd = process.env.NODE_ENV === 'production';
+
 const io = new Server(server, {
-  cors: {
+  cors: isProd ? false : {
     origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
   },
 });
+
+if (isProd) {
+  const clientDist = path.join(__dirname, '../client/dist');
+  app.use(express.static(clientDist));
+  app.get('*', (_, res) => res.sendFile(path.join(clientDist, 'index.html')));
+}
 
 const COLS = 50;
 const ROWS = 40;
