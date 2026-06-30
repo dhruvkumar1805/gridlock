@@ -113,6 +113,8 @@ export default function Grid({ cells, me, onClaim, cooldown }) {
   );
 
   const { x, y, scale } = view;
+  const claimed = useMemo(() => cells.filter(c => c.owner).length, [cells]);
+  const pctClaimed = ((claimed / cells.length) * 100).toFixed(1);
 
   return (
     <div
@@ -135,6 +137,13 @@ export default function Grid({ cells, me, onClaim, cooldown }) {
         <button className="zoom-btn" onClick={() => zoom(1.25)} title="zoom in">+</button>
         <button className="zoom-btn" onClick={() => zoom(0.8)} title="zoom out">−</button>
         <button className="zoom-btn reset-btn" onClick={resetView} title="reset view">fit</button>
+      </div>
+
+      <div className="grid-stats">
+        <span className="gs-num">{claimed}</span>
+        <span className="gs-sep">/</span>
+        <span>{cells.length} tiles claimed</span>
+        <span className="gs-pct">({pctClaimed}%)</span>
       </div>
 
       <div className="grid-hint">scroll to zoom · drag to pan · click to claim</div>

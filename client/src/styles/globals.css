@@ -256,6 +256,38 @@ button {
   letter-spacing: 0.3px;
 }
 
+/* ── Grid stats ───────────────────────────────── */
+
+.grid-stats {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11.5px;
+  color: var(--muted);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 5px 12px;
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.gs-num {
+  color: #fff;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.gs-sep {
+  opacity: 0.4;
+}
+
+.gs-pct {
+  opacity: 0.6;
+}
+
 /* ── Hint overlay ─────────────────────────────── */
 
 .grid-hint {
